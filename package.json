@@ -16,7 +16,9 @@
     "grunt-cli": "latest",
     "grunt-contrib-clean": "latest",
     "grunt-contrib-less": "latest",
-    "grunt-contrib-copy": "latest"
+    "grunt-contrib-copy": "latest",
+    "bootstrap": "latest",
+    "font-awesome": "latest"
   },
   "repository": {
     "type": "git",

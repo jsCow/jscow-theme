@@ -16,7 +16,8 @@ module.exports = function(grunt) {
 					cleancss: true,
 					modifyVars: {
 						//imgPath: '"http://"'
-					}
+					},
+					compress: true
 				},
 				files: {
 					"dist/css/theme-min.css": "src/less/theme.less"
@@ -30,10 +31,19 @@ module.exports = function(grunt) {
 					{
 	                    expand: true,
 	                    //dot: true,
+	                    cwd: 'node_modules/font-awesome',
+	                    src: ['fonts/*.*'],
+	                    dest: 'dist'
+					}
+					/*,
+					{
+	                    expand: true,
+	                    //dot: true,
 	                    cwd: 'src/less',
 	                    src: ['**'],
 	                    dest: 'dist/less'
 					}
+					*/
 				]
 			}
 		}
