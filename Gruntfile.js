@@ -12,15 +12,14 @@ module.exports = function(grunt) {
 		less: {
 			production: {
 				options: {
-					paths: ["src/less"],
 					cleancss: true,
-					modifyVars: {
-						//imgPath: '"http://"'
-					},
-					compress: true
+					//relativeUrls: true,
+					sourceMap: true,
+                    sourceMapFilename: "theme-min.css.map",
+                    sourceMapBasepath: "dist/css"
 				},
 				files: {
-					"dist/css/theme-min.css": "src/less/theme.less"
+					"dist/css/theme-min.css": ["dist/css/less/theme.less"]
 				}
 			}
 		},
@@ -30,20 +29,44 @@ module.exports = function(grunt) {
 				files: [
 					{
 	                    expand: true,
-	                    //dot: true,
-	                    cwd: 'node_modules/font-awesome',
-	                    src: ['fonts/*.*'],
-	                    dest: 'dist'
-					}
-					/*,
+	                    cwd: 'node_modules/jquery/dist',
+	                    src: ['jquery.min.js'],
+	                    dest: 'dist/js/jquery'
+					},
 					{
 	                    expand: true,
-	                    //dot: true,
+	                    cwd: 'node_modules/bootstrap/less',
+	                    src: ['**'],
+	                    dest: 'dist/css/less/bootstrap'
+					},
+					{
+	                    expand: true,
+	                    cwd: 'node_modules/font-awesome/less',
+	                    src: ['**'],
+	                    dest: 'dist/css/less/font-awesome'
+					},
+					{
+	                    expand: true,
+	                    cwd: 'node_modules/font-awesome',
+	                    src: ['fonts/**'],
+	                    dest: 'dist'
+					},
+					{
+	                    expand: true,
 	                    cwd: 'src/less',
 	                    src: ['**'],
-	                    dest: 'dist/less'
-					}
-					*/
+	                    dest: 'dist/css/less'
+					},
+					grunt.file.expand(['node_modules/jscow-*/src/less']).map(function(cwd) {
+			            return [
+			            	{
+			                	expand: true,
+			                	cwd: cwd,
+			                	src: ["**"],
+			                	dest: "dist/css/less"
+			            	}
+			            ];
+			        })
 				]
 			}
 		}
@@ -57,8 +80,8 @@ module.exports = function(grunt) {
 	// Default task(s).
 	grunt.registerTask('default', [
 		'clean',
-		'less',
-		'copy'
+		'copy',
+		'less'
 	]);
 
 };
