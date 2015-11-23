@@ -18,7 +18,8 @@
     "grunt-contrib-less": "latest",
     "grunt-contrib-copy": "latest",
     "bootstrap": "latest",
-    "font-awesome": "latest"
+    "font-awesome": "latest",
+    "jscow-button": "latest"
   },
   "repository": {
     "type": "git",
