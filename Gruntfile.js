@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 					cleancss: true,
 					compress: true,
 					sourceMap: true,
-                    sourceMapFilename: "theme-min.css.map",
+                    sourceMapFilename: "dist/css/theme-min.css.map",
                     sourceMapBasepath: "dist/css"
 				},
 				files: {
