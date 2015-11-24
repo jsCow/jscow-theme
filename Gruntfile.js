@@ -113,7 +113,10 @@ module.exports = function(grunt) {
 				livereload: true,
 			},
 			css: {
-				files: ['src/**/*.less'],
+				files: [
+					'src/**/*.less',
+					'src/**/*.js'
+				],
 				tasks: [
 					'copy',
 					'less'

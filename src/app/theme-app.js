@@ -12,6 +12,16 @@ $(function(){
 
 	btn1.run();
 	
+var btn1 = jsCow.get(jsCow.res.components.button, { 
+		text: 'Button', 
+		icon: {
+			name: 'user',
+			direction: 'l'
+		}
+	});
+
+	btn1.run();
+	
 
 	/*
 	toolbar = jsCow.get(jsCow.res.components.toolbar);
