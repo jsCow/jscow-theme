@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 			production: {
 				options: {
 					cleancss: true,
-					//relativeUrls: true,
+					compress: true,
 					sourceMap: true,
                     sourceMapFilename: "theme-min.css.map",
                     sourceMapBasepath: "dist/css"
@@ -29,9 +29,21 @@ module.exports = function(grunt) {
 				files: [
 					{
 	                    expand: true,
+	                    cwd: 'src/',
+	                    src: ['index.html'],
+	                    dest: 'dist'
+					},
+					{
+	                    expand: true,
 	                    cwd: 'node_modules/jquery/dist',
 	                    src: ['jquery.min.js'],
 	                    dest: 'dist/js/jquery'
+					},
+					{
+	                    expand: true,
+	                    cwd: 'node_modules/font-awesome',
+	                    src: ['fonts/**'],
+	                    dest: 'dist'
 					},
 					{
 	                    expand: true,
@@ -44,12 +56,6 @@ module.exports = function(grunt) {
 	                    cwd: 'node_modules/font-awesome/less',
 	                    src: ['**'],
 	                    dest: 'dist/css/less/font-awesome'
-					},
-					{
-	                    expand: true,
-	                    cwd: 'node_modules/font-awesome',
-	                    src: ['fonts/**'],
-	                    dest: 'dist'
 					},
 					{
 	                    expand: true,
@@ -69,6 +75,50 @@ module.exports = function(grunt) {
 			        })
 				]
 			}
+		},
+
+		concat: {
+			options: {
+				separator: ';',
+			},
+			dist: {
+				src: [
+					'node_modules/jscow/dist/jscow/jscow.min.js',
+					'node_modules/jscow-*/dist/jscow/components/*.min.js'
+				],
+				dest: 'dist/js/jscow/jscow.min.js'
+			}
+		},
+
+		uglify: {
+			options: {
+				mangle: {
+					except:	['jQuery']
+				}
+			},
+			my_target: {
+				options: {
+					mangle: false
+				},
+				files: [
+					{
+						'dist/js/app/theme-app.min.js': ['src/app/theme-app.js']
+					}
+				]
+			}
+		},
+
+		watch: {
+			options: {
+				livereload: true,
+			},
+			css: {
+				files: ['src/**/*.less'],
+				tasks: [
+					'copy',
+					'less'
+				],
+			}
 		}
 		
 	});
@@ -76,12 +126,17 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+
 	// Default task(s).
 	grunt.registerTask('default', [
 		'clean',
 		'copy',
-		'less'
+		'less',
+		'concat',
+		'uglify'
 	]);
-
+	
 };

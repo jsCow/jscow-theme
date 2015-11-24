@@ -17,9 +17,16 @@
     "grunt-contrib-clean": "latest",
     "grunt-contrib-less": "latest",
     "grunt-contrib-copy": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-compress": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-watch": "latest",
     "bootstrap": "latest",
     "font-awesome": "latest",
-    "jscow-button": "latest"
+    "jscow": "latest",
+    "jscow-button": "latest",
+    "jquery": "latest"
   },
   "repository": {
     "type": "git",
