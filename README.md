@@ -25,7 +25,7 @@ grunt watch
 
 ## Dependencies
 
-`jscow-application-environment` needs the following node packages:
+`jscow-theme` needs the following node packages:
 All packages will be installed with command **'npm install'**.
 
 * [grunt](https://www.npmjs.com/package/grunt) - The JavaScript Task Runner.
