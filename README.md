@@ -52,4 +52,4 @@ All packages will be installed with command **'npm install'**.
 
 ## License
 
-`jscow-application-environment` is licensed under the GNU GPL.
+`jscow-theme` is licensed under the GNU GPL.
