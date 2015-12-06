@@ -84,7 +84,8 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					'node_modules/jscow/dist/jscow/jscow.min.js',
-					'node_modules/jscow-*/dist/jscow/components/*.min.js'
+					'node_modules/jscow-*/src/jscow/components/*.js',
+					'src/jscow/components/*.js',
 				],
 				dest: 'dist/js/jscow/jscow.min.js'
 			}
@@ -108,6 +109,23 @@ module.exports = function(grunt) {
 			}
 		},
 
+		jshint: {
+			options: {
+				curly: true,
+				eqeqeq: true,
+				eqnull: true,
+				browser: true,
+				maxparams: 4,
+				notypeof: true,
+				globals: {
+					jQuery: true
+				}
+			},
+			all: [
+				'src/app/**/*.js'
+			]
+		},
+
 		watch: {
 			options: {
 				livereload: true,
@@ -118,8 +136,11 @@ module.exports = function(grunt) {
 					'src/**/*.js'
 				],
 				tasks: [
+					'clean',
 					'copy',
-					'less'
+					'less',
+					'concat',
+					'uglify'
 				],
 			}
 		}
@@ -127,6 +148,7 @@ module.exports = function(grunt) {
 	});
 	
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -136,6 +158,7 @@ module.exports = function(grunt) {
 	// Default task(s).
 	grunt.registerTask('default', [
 		'clean',
+		'jshint',
 		'copy',
 		'less',
 		'concat',
