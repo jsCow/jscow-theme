@@ -1,7 +1,7 @@
 {
   "name": "jscow-theme",
   "description": "jsCow - Theme - Javascript Component Framework",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "GPL-3.0+",
   "readme": "README.md",
   "author": "Mario Linz <jscow@gmx.de>",
@@ -28,6 +28,7 @@
     "font-awesome": "latest",
     "jscow": "latest",
     "jscow-button": "latest",
+    "jscow-buttongroup": "latest",
     "jscow-panel": "latest",
     "jscow-group": "latest"
   },
